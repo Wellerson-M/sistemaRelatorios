@@ -1,23 +1,37 @@
-const express = require("express");
-const cors = require("cors");
-const mongoose = require("mongoose");
-const helmet = require("helmet");
-require("dotenv").config();
+const express = require('express');
+const mongoose = require('mongoose');
+const cors = require('cors');
+require('dotenv').config({ path: __dirname + '/.env' });
+
+const criarAdminInicial = require('./utils/initAdmin'); // 👈 adicionado aqui
+
+console.log('MONGO_URI carregado:', process.env.MONGO_URI);
 
 const app = express();
-app.use(cors());
+
+// Permitir requisições do frontend na porta 3000
+app.use(cors({ origin: 'http://localhost:3000' }));
+
 app.use(express.json());
-app.use(helmet());
 
-mongoose.connect(process.env.MONGO_URI)
-  .then(() =
-  .catch((err) =, err));
+// Servir arquivos da pasta uploads (para ver recibos no frontend)
+app.use('/uploads', express.static('uploads'));
 
-const authRoutes = require("./routes/auth");
-app.use("/api/auth", authRoutes);
+// Rotas de autenticação
+const authRoutes = require('./routes/authRoutes');
+app.use('/api/auth', authRoutes);
 
-app.get("/", (req, res) =
-  res.send("Servidor rodando com segurança!");
-});
+// Rotas de relatórios
+const relatorioRoutes = require('./routes/relatorioRoutes');
+app.use('/api/relatorios', relatorioRoutes);
 
-app.listen(PORT, () = rodando na porta ${PORT}`));
+// Conexão com MongoDB
+mongoose.connect(process.env.MONGO_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+}).then(() => {
+    console.log('MongoDB conectado');
+
+    criarAdminInicial(); // 👈 chamada aqui
+    app.listen(5000, () => console.log('Servidor rodando na porta 5000'));
+}).catch((err) => console.error('Erro ao conectar:', err));

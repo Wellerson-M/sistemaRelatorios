@@ -1,8 +1,9 @@
 const express = require('express');
-
 const mongoose = require('mongoose');
 const cors = require('cors');
 require('dotenv').config({ path: __dirname + '/.env' });
+
+const criarAdminInicial = require('./utils/initAdmin'); // 👈 adicionado aqui
 
 console.log('MONGO_URI carregado:', process.env.MONGO_URI);
 
@@ -30,5 +31,7 @@ mongoose.connect(process.env.MONGO_URI, {
     useUnifiedTopology: true
 }).then(() => {
     console.log('MongoDB conectado');
+
+    criarAdminInicial(); // 👈 chamada aqui
     app.listen(5000, () => console.log('Servidor rodando na porta 5000'));
 }).catch((err) => console.error('Erro ao conectar:', err));
