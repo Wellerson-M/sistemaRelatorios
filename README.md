@@ -66,13 +66,13 @@ cd sistemaRelatorios
 
 Copie o arquivo de exemplo e edite com suas credenciais:
 
-```bash
+```
 cp backend/.env.example backend/.env
 ```
 
 Exemplo de conteúdo do `.env`:
 
-```env
+```
 MONGO_URI=mongodb://127.0.0.1:27017/relatoriosDB
 JWT_SECRET=sua_chave_secreta_aqui
 
@@ -83,22 +83,29 @@ JWT_SECRET=sua_chave_secreta_aqui
 > - **Senha:** 123456  
 > - **Cargo:** gerente
 
-### 4. Instale as dependências do projeto
+# 📦 Instalação das dependências
+
+> Na **raiz do projeto**, execute:
 
 ```bash
 npm install
 ```
 
-### 5. Execute o projeto (frontend + backend)
+Esse comando instalará automaticamente as dependências do **frontend** e do **backend** via `workspaces`.
 
-> Na pasta principal do projeto, digite:
+---
+
+## ▶️ Execução do projeto (frontend + backend)
+
+> Ainda na **raiz do projeto**, execute:
 
 ```bash
 npm run dev
 ```
 
-> 🖥️ O backend rodará na porta `5000`  
-> 🌐 O frontend estará disponível em `http://localhost:3000`
+- 🖥️ O backend rodará na porta `5000`
+- 🌐 O frontend será iniciado em: `http://localhost:3000`  
+- 🔁 O projeto redireciona automaticamente para a tela de **login**
 
 ---
 
@@ -110,7 +117,7 @@ sistemaRelatorios/
 │   ├── controllers/
 │   ├── crypto/
 │   ├── middleware/
-│   ├── models/
+│   ├── models/ 
 │   ├── routes/
 │   ├── utils/
 │   ├── uploads/
