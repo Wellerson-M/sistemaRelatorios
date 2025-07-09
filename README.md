@@ -57,7 +57,7 @@ Sistema web desenvolvido com Node.js, Next.js e MongoDB, com foco em autenticaç
 
 ### 2. Clone o projeto
 
-```bash
+```
 git clone https://github.com/Wellerson-M/sistemaRelatorios.git
 cd sistemaRelatorios
 ```
@@ -87,7 +87,7 @@ JWT_SECRET=sua_chave_secreta_aqui
 
 > Na **raiz do projeto**, execute:
 
-```bash
+```
 npm install
 ```
 
@@ -99,7 +99,7 @@ Esse comando instalará automaticamente as dependências do **frontend** e do **
 
 > Ainda na **raiz do projeto**, execute:
 
-```bash
+```
 npm run dev
 ```
 
